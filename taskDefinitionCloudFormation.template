@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  qualysScanner:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      RequiresCompatibilities:
+        - "EC2"
+      NetworkMode: "awsvpc"
+      ContainerDefinitions:
+        -
+          Name: "name"
+          MountPoints:
+            -
+              SourceVolume: "volume"
+              ContainerPath: "/path"
+            -
+              SourceVolume: "volume"
+              ContainerPath: "/path"
+            -
+              SourceVolume: "volume"
+              ContainerPath: "/path"
+
+          Image: "image:tag"
+          Cpu: "10"
+          Memory: "512"
+          Command:
+            - "--ecs-mode"
+          Essential: "true"
+          Environment:
+            - Name: KEY
+              Value: VALUE
+            - Name: KEY
+              Value: VALUE
+      Volumes:
+        -
+          Host:
+            SourcePath: "/path"
+          Name: "name"
+        -
+          Host:
+            SourcePath: "/path"
+          Name: "name"
+        -
+          Host:
+            SourcePath: "/path"
+          Name: "name"
