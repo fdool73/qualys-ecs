@@ -8,7 +8,7 @@ def lambda_handler(event, context):
     client = boto3.client('ecs', region_name='us-east-1')
     response = client.register_task_definition(
         family='string',
-        networkMode='awsvpc',
+        networkMode='bridge',
         containerDefinitions=[
             {
                 'name': 'string',
